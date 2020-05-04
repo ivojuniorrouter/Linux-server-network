@@ -1,0 +1,22 @@
+# Configuring an interface
+
+sudo ip link set dev eth0 down
+sudo dhclient eth0
+
+sudo ip addr add 192.168.1.14/24 dev eth0
+sudo ip link set dev eth0 up
+sudo ip route add default via 192.168.1.1
+
+sudo /etc/init.d/networking restart
+
+auto eth0:1
+iface eth0:1 inet static
+  address 192.168.1.24
+  netmask 255.255.255.0
+  network 192.168.1.1
+  broadcast 192.168.1.255
+  gateway 192.168.1.1
+ 
+sudo /etc/init.d/networking restart
+  
+
